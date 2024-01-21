@@ -18,6 +18,6 @@
         "ghcr.io/devcontainers/features/powershell": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
-    "postCreateCommand": "pip3 install --no-cache-dir requests matrix_client configparser",
+    "postCreateCommand": "pip3 install --no-cache-dir requests matrix_client matrix-nio configparser",
     "runasUser": "vscode"
 }

@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ../scripts/matrix-b0t.py /app/matrix-b0t.py
 
 # Installieren Sie alle benötigten Pakete
-RUN pip install --no-cache-dir requests matrix_client configparser
+RUN pip install --no-cache-dir requests matrix_client configparser matrix-nio
 
 # Führen Sie das Skript aus, wenn der Container gestartet wird
 CMD ["python", "./matrix-b0t.py"]
