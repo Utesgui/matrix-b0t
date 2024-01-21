@@ -10,9 +10,7 @@
     ],
     "settings": {
         "terminal.integrated.defaultProfile.linux": "pwsh",
-        "python.pythonPath": "/usr/local/bin/python",
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": true
+        "python.pythonPath": "/usr/local/bin/python"
     },
     "features": {
         "ghcr.io/devcontainers/features/powershell": {},
