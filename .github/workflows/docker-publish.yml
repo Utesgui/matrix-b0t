@@ -70,6 +70,18 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      # Add tags based on branch name
+      - name: Add tags based on branch name
+        id: add-tags
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "::set-output name=tags::latest"
+          elif [[ "${{ github.ref }}" == "refs/heads/beta" ]]; then
+            echo "::set-output name=tags::beta"
+          else
+            echo "::set-output name=tags::bleeding"
+          fi
+          
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
@@ -79,7 +91,7 @@ jobs:
           file: ./docker/matrix-b0t.Dockerfile
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}, ${{ steps.add-tags.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
