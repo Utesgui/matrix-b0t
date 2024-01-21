@@ -1,0 +1,9 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  matrix-b0t:
+    build: ./docker/matrix-b0t.Dockerfile
+    volumes:
+      - ./config:/config
+    environment:
+      - CONFIG_PATH=/config/config.ini
