@@ -1,18 +1,17 @@
 {
-    "name": "Python, Docker, and PowerShell",
-    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.8-buster",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "terminal.integrated.defaultProfile.linux": "pwsh"
-            },
-            "extensions": [
-                "ms-python.python",
-                "ms-azuretools.vscode-docker",
-                "ms-vscode.powershell"
-            ]
-        }
+    "name": "Python Project",
+    "image": "python:3.8-buster",
+    "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.powershell"
+    ],
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "pwsh",
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true
     },
-    "forwardPorts": [],
     "postCreateCommand": "sudo apt-get update && sudo apt-get install -y docker.io && sudo pip3 install --no-cache-dir requests matrix_client configparser",
+    "runasUser": "vscode"
 }
