@@ -6,6 +6,9 @@ import os
 # Read the configuration file
 config = configparser.ConfigParser()
 config_path = os.getenv('CONFIG_PATH', '/config/config.ini')  # Use the environment variable CONFIG_PATH. If it doesn't exist, default to 'config.ini'.
+if not os.path.exists(config_path):
+    raise Exception(f"Konfigurationsdatei {config_path} existiert nicht")
+    exit()
 config_base_path = os.path.dirname(config_path)
 joined_rooms_file = os.path.join(config_base_path, 'joined-rooms.txt')
 
