@@ -1,6 +1,6 @@
 {
     "name": "Python, Docker, and PowerShell",
-    "image": "mcr.microsoft.com/vscode/devcontainers/universal:1.0",
+    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.8-buster",
     "customizations": {
         "vscode": {
             "settings": {
@@ -14,6 +14,6 @@
         }
     },
     "forwardPorts": [],
-    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3 python3-pip docker.io && pip3 install --no-cache-dir requests matrix_client configparser",
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y docker.io && sudo pip3 install --no-cache-dir requests matrix_client configparser",
     "remoteUser": "vscode"
 }
