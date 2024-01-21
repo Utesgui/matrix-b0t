@@ -15,5 +15,4 @@
     },
     "forwardPorts": [],
     "postCreateCommand": "sudo apt-get update && sudo apt-get install -y docker.io && sudo pip3 install --no-cache-dir requests matrix_client configparser",
-    "remoteUser": "vscode"
 }
