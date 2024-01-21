@@ -74,14 +74,18 @@ jobs:
       - name: Add tags based on branch name
         id: add-tags
         run: |
+          TAGS="${{ steps.meta.outputs.tags }}"
+          FIRST_TAG=${TAGS%%,*} # get the first entry
+          URL=${FIRST_TAG%%:*} # split on : and keep left hand text
+          echo "::set-output name=first_tag::$URL"
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "::set-output name=tags::latest"
+            echo "::set-output name=tags::$URL:latest"
           elif [[ "${{ github.ref }}" == "refs/heads/beta" ]]; then
-            echo "::set-output name=tags::beta"
+            echo "::set-output name=tags::$URL:beta"
           else
-            echo "::set-output name=tags::bleeding"
+            echo "::set-output name=tags::$URL:bleeding"
           fi
-          
+
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
