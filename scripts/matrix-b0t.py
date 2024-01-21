@@ -37,7 +37,7 @@ prefix = config['Matrix'].get('command_prefix', '!b0t')
 
 # Required configuration keys
 REQUIRED_CONFIG = {
-    'Matrix': ['server_url', 'room_id'],
+    'Matrix': ['server_url', 'room_id', 'username'],
     'Users': [],
     'Webhooks': []
 }
@@ -56,8 +56,8 @@ def check_config(config):
                 raise Exception(f"Missing key {key} in section {section} in config file")
     if 'Matrix' in config:
         matrix_section = config['Matrix']
-        if 'token' not in matrix_section and ('username' not in matrix_section or 'password' not in matrix_section):
-            raise Exception("Either 'token' or 'username' and 'password' are required in the 'Matrix' section of the config file")
+        if 'token' not in matrix_section and 'password' not in matrix_section:
+            raise Exception("Either 'token' or 'password' are required in the 'Matrix' section of the config file")
 
 async def on_invite(room_id, state):
     print(f"Invited to room: {room_id}")
